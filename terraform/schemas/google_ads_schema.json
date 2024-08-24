@@ -1,0 +1,23 @@
+[
+    {
+      "name": "campaign_name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "clicks",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "impressions",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "date",
+      "type": "DATE",
+      "mode": "NULLABLE"
+    }
+  ]
+  

@@ -1,6 +1,11 @@
 pandas
 requests
-duckdb
 polars 
 google-cloud-storage 
 google-cloud-bigquery
+kafka
+json
+logging
+kafka-python
+google-auth
+coverage

@@ -1,0 +1,15 @@
+name: 'self_serve_etl_project'
+version: '1.0'
+config-version: 2
+
+# Define default configurations for models, seeds, and snapshots
+model-paths: ['models']
+
+models:
+  self_serve_etl_project:
+    facebook_ads:
+      +schema: 'facebook_ads'
+    google_ads:
+      +schema: 'google_ads'
+    twitter_ads:
+      +schema: 'twitter_ads'

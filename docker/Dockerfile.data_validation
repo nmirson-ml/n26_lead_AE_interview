@@ -1,0 +1,15 @@
+# Base image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy data validation code into the container
+COPY data_validation/ /app/data_validation/
+
+# Set the command to run data validation
+CMD ["python", "/app/data_validation/polars_data_validation.py"]

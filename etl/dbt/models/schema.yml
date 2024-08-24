@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: facebook_ads_transformed
+    description: "Transformed Facebook Ads data, including calculated CTR"
+    columns:
+      - name: campaign_name
+        description: "The name of the ad campaign"
+      - name: clicks
+        description: "The number of clicks on the ad"
+      - name: impressions
+        description: "The number of times the ad was viewed"
+      - name: ctr
+        description: "The click-through rate, calculated as clicks/impressions"
+
+  - name: google_ads_transformed
+    description: "Transformed Google Ads data, including calculated CTR"
+    columns:
+      - name: campaign_name
+        description: "The name of the ad campaign"
+      - name: clicks
+        description: "The number of clicks on the ad"
+      - name: impressions
+        description: "The number of times the ad was viewed"
+      - name: ctr
+        description: "The click-through rate, calculated as clicks/impressions"
+
+  - name: twitter_ads_transformed
+    description: "Transformed Twitter Ads data, including calculated CTR"
+    columns:
+      - name: campaign_name
+        description: "The name of the ad campaign"
+      - name: clicks
+        description: "The number of clicks on the ad"
+      - name: impressions
+        description: "The number of times the ad was viewed"
+      - name: ctr
+        description: "The click-through rate, calculated as clicks/impressions"

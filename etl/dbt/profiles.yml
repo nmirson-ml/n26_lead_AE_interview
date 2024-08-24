@@ -1,0 +1,23 @@
+self_serve_etl_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: gcp_project_id
+      dataset: bigquery_dataset
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      retries: 1
+    prod:
+      type: bigquery
+      method: oauth
+      project: gcp_project_id
+      dataset: bigquery_dataset
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      retries: 1
