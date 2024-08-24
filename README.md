@@ -2,7 +2,126 @@
 
 ## Case Study 
 
-This repository contains the implementation of a **Self-Service Data Ingestion Platform**. The platform enables ingestion of data from multiple marketing APIs, streaming into Kafka, transformation via dbt, and loading into Google BigQuery. It also includes automated data validation using Polars and Kafka Connect for streaming ingestion.
+This repository contains a **Self-Serve Data Ingestion Platform** for ingesting data from multiple marketing APIs (e.g., Facebook Ads, Google Ads, Twitter Ads) into **Google BigQuery**. The platform uses **Kafka Connect** for streaming data and **dbt** for transforming raw data into meaningful insights. All infrastructure, including BigQuery tables and Kafka Connectors, is managed using **Terraform**.
+
+## Project Overview
+
+### Key Components
+
+- **API Connectors**: Fetches data from marketing APIs (e.g., Facebook Ads, Google Ads, Twitter Ads) and streams it into Kafka topics.
+- **Kafka Connect**: Streams data from Kafka topics into BigQuery.
+- **BigQuery**: Stores both raw and transformed marketing data.
+- **dbt**: Transforms raw data into processed tables for analysis, such as calculating click-through rates (CTR).
+- **Data Validation**: Ensures data quality using **Polars**.
+- **Error Handling**: Logs errors and implements retry mechanisms.
+- **Terraform**: Manages infrastructure as code, including BigQuery datasets, tables, and Kafka Connect configurations.
+- **CI/CD Integration**: Ensures continuous integration with test coverage and automated infrastructure deployment.
+
+## Project Structure
+
+```bash
+self_serve_data_ingestion_platform/
+├── api_connectors/
+│   ├── __init__.py
+│   ├── facebook_ads_connector.py
+│   ├── google_ads_connector.py
+│   ├── twitter_ads_connector.py
+│   ├── kafka_producer.py
+│   └── kafka_publisher.py
+├── etl/
+│   ├── __init__.py
+│   ├── transformations.py
+│   └── dbt/
+│       ├── models/
+│       │   ├── facebook_ads/
+│       │   │   ├── facebook_ads_raw.sql
+│       │   │   ├── facebook_ads_transformed.sql
+│       │   ├── google_ads/
+│       │   │   ├── google_ads_raw.sql
+│       │   │   ├── google_ads_transformed.sql
+│       │   ├── twitter_ads/
+│       │   │   ├── twitter_ads_raw.sql
+│       │   │   ├── twitter_ads_transformed.sql
+│       ├── dbt_project.yml
+│       └── profiles.yml
+├── data_validation/
+│   ├── __init__.py
+│   ├── polars_data_validation.py
+├── error_handling/
+│   ├── __init__.py
+│   ├── error_logger.py
+│   └── retry_handler.py
+├── kafka_connect/
+│   ├── deploy_connector.sh
+│   └── credentials/
+│       └── service_account.json
+├── docker/
+│   ├── Dockerfile.api_connectors
+│   ├── Dockerfile.etl
+│   └── Dockerfile.data_validation
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── bigquery.tf
+│   ├── kafka_connect.tf
+│   ├── schemas/
+│   │   ├── facebook_ads_schema.json
+│   │   ├── facebook_ads_transformed_schema.json
+│   │   ├── google_ads_schema.json
+│   │   ├── google_ads_transformed_schema.json
+│   │   ├── twitter_ads_schema.json
+│   │   ├── twitter_ads_transformed_schema.json
+├── tests/
+│   ├── __init__.py
+│   ├── test_api_connectors.py
+│   ├── test_etl.py
+│   ├── test_data_validation.py
+│   ├── test_error_handling.py
+│   ├── test_kafka_connect.py
+├── scripts/
+│   ├── start_kafka_connect.sh
+│   ├── run_etl_with_dbt.sh
+│   ├── run_data_validation.sh
+│   └── run_error_monitoring.sh
+├── docker-compose.yml
+└── README.md
+```
+
+## Key Features
+### API Connectors:
+
+- Fetches data from marketing APIs.
+- Sends the data to Kafka topics.
+
+### Terraform:
+
+- **Infrastructure as Code**: Manages BigQuery datasets, tables, and Kafka Connect configuration.
+- **Automated Deployment**: Ensures infrastructure is created and configured consistently.
+
+### Kafka Connect:
+
+- Streams raw data from Kafka topics to BigQuery tables.
+- Managed through Terraform for easy scaling and management.
+
+### ETL & dbt:
+
+- **Raw Data Tables**: Data is initially stored in raw tables (e.g., facebook_ads_raw, google_ads_raw).
+- **Transformed Data Tables**: dbt models transform the raw data into tables that calculate key metrics like CTR (facebook_ads_transformed, google_ads_transformed).
+### Data Validation:
+
+- Ensures the quality of the data using Polars to validate fields and identify inconsistencies.
+### Error Handling:
+
+- Logs errors and retries tasks automatically in case of transient failures.
+
+
+### Terraform Infrastructure
+Terraform is used to manage the infrastructure in Google Cloud and Confluent Cloud. The following resources are managed:
+
+- **BigQuery Datasets & Tables**: Terraform provisions the necessary BigQuery datasets and tables for both raw and transformed data.
+- **Kafka Connectors**: Kafka Connect is set up to stream data from Kafka topics to BigQuery tables.
+
 
 ## External Resources Used in This Project
 
