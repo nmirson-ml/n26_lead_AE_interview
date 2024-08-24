@@ -147,6 +147,7 @@ This project is inspired by various concepts and tools related to the self-servi
    Discover how Polars can improve data transformation and code quality:
    - [Improving Code Quality During Data Transformation with Polars](https://towardsdatascience.com/improving-code-quality-during-data-transformation-with-polars-92997e67c8a9)
 
+
 ## How to Use
 
 ### 1. API Connectors
@@ -154,28 +155,36 @@ This project is inspired by various concepts and tools related to the self-servi
 - **Files**: Located in `api_connectors/`.
 
 ### 2. ETL
-- **Purpose**: Transforms data using **dbt** and handles data processing with **Polars**.
+- **Purpose**: Transforms data using **dbt** and handles data processing with **Polars**. This includes both raw and transformed tables stored in BigQuery.
 - **Files**: Located in `etl/`.
 
 ### 3. Data Validation
-- **Purpose**: Validates data using **Polars** and ensures data quality based on defined expectations.
+- **Purpose**: Validates data using **Polars** and ensures data quality based on defined expectations and validation rules.
 - **Files**: Located in `data_validation/`.
 
 ### 4. Kafka Connect
-- **Purpose**: Automatically streams data from Kafka into Google BigQuery using **Kafka Connect BigQuery Sink**.
+- **Purpose**: Streams data from Kafka topics into Google BigQuery using the **Kafka Connect BigQuery Sink** connector. Managed by Terraform for easy scaling and configuration.
 - **Files**: Located in `kafka_connect/`.
 
 ### 5. Error Handling
-- **Purpose**: Logs and handles errors, with retry mechanisms for transient issues.
+- **Purpose**: Provides error logging and retry mechanisms for transient issues, ensuring stability in the platform.
 - **Files**: Located in `error_handling/`.
 
 ### 6. Docker
-- **Purpose**: Containerizes different components of the platform for consistency and ease of deployment.
+- **Purpose**: Containerizes different components of the platform for consistency, repeatability, and ease of deployment. 
 - **Files**: Dockerfiles are located in `docker/`.
 
 ### 7. Scripts
-- **Purpose**: Automates the execution and deployment of the different components in the pipeline.
+- **Purpose**: Automates the execution and deployment of the various components in the data pipeline, including Kafka Connect setup, ETL, data validation, and error monitoring.
 - **Files**: Located in `scripts/`.
+
+### 8. Tests
+- **Purpose**: Ensures all components are functioning as expected with 100% test coverage across the codebase. Unit tests cover API connectors, ETL processes, data validation, error handling, and Kafka integration.
+- **Files**: Located in `tests/`.
+
+### 9. Terraform
+- **Purpose**: Manages infrastructure as code, including provisioning and configuration of BigQuery datasets, tables, and Kafka Connect connectors. It ensures that infrastructure is consistently deployed and managed.
+- **Files**: Located in `terraform/`.
 
 ## Environments
 
@@ -184,3 +193,4 @@ This platform supports multiple environments (e.g., `dev`, `prod`). Environment-
 - **dev.env**: Development environment configuration.
 - **prod.env**: Production environment configuration.
 
+To switch between environments, load the appropriate environment configuration from the `config/` directory. Each environment configuration contains the necessary environment variables and settings to adjust the behavior of the platform components.
