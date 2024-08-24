@@ -9,3 +9,4 @@ logging
 kafka-python
 google-auth
 coverage
+dbt-bigquery
