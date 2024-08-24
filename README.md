@@ -88,65 +88,6 @@ self_serve_data_ingestion_platform/
 └── README.md
 ```
 
-## Key Features
-### API Connectors:
-
-- Fetches data from marketing APIs.
-- Sends the data to Kafka topics.
-
-### Terraform:
-
-- **Infrastructure as Code**: Manages BigQuery datasets, tables, and Kafka Connect configuration.
-- **Automated Deployment**: Ensures infrastructure is created and configured consistently.
-
-### Kafka Connect:
-
-- Streams raw data from Kafka topics to BigQuery tables.
-- Managed through Terraform for easy scaling and management.
-
-### ETL & dbt:
-
-- **Raw Data Tables**: Data is initially stored in raw tables (e.g., facebook_ads_raw, google_ads_raw).
-- **Transformed Data Tables**: dbt models transform the raw data into tables that calculate key metrics like CTR (facebook_ads_transformed, google_ads_transformed).
-### Data Validation:
-
-- Ensures the quality of the data using Polars to validate fields and identify inconsistencies.
-### Error Handling:
-
-- Logs errors and retries tasks automatically in case of transient failures.
-
-
-### Terraform Infrastructure
-Terraform is used to manage the infrastructure in Google Cloud and Confluent Cloud. The following resources are managed:
-
-- **BigQuery Datasets & Tables**: Terraform provisions the necessary BigQuery datasets and tables for both raw and transformed data.
-- **Kafka Connectors**: Kafka Connect is set up to stream data from Kafka topics to BigQuery tables.
-
-
-## External Resources Used in This Project
-
-This project is inspired by various concepts and tools related to the self-service data ingestion platform and the tech stack at N26. Below are some key references used during the development of this platform:
-
-1. **Tech Stack Used in N26 - Overview of Architecture**  
-   Gain insight into the technology and architecture used at N26:
-   - [Engineering at N26: A Tour of Our Tech Stack and Architecture](https://medium.com/insiden26/engineering-at-n26-a-tour-of-our-tech-stack-and-architecture-9e58ce96f889)
-
-2. **Interview with Analytics Engineer at N26**  
-   Watch an interview with an Analytics Engineer at N26 to understand the role's responsibilities and expectations:
-   - [Interview with Analytics Engineer at N26](https://www.youtube.com/watch?v=kqm3VcyWS3o)
-
-3. **Characteristics of a Self-Service Data Lake**  
-   Explore the characteristics and architecture of a self-service data lake:
-   - [Characteristics and Architecture of a Self-Service Data Lake](https://medium.com/engineered-publicis-sapient/characteristics-and-architecture-of-a-self-service-data-lake-a3eb61aac032)
-
-4. **Streaming Data into BigQuery**  
-   Learn how to stream billions of daily events from Kafka to BigQuery:
-   - [Kafka to BigQuery Load: A Guide for Streaming Billions of Daily Events](https://medium.com/myheritage-engineering/kafka-to-bigquery-load-a-guide-for-streaming-billions-of-daily-events-cbbf31f4b737)
-
-5. **Transformations Using Polars**  
-   Discover how Polars can improve data transformation and code quality:
-   - [Improving Code Quality During Data Transformation with Polars](https://towardsdatascience.com/improving-code-quality-during-data-transformation-with-polars-92997e67c8a9)
-
 
 ## How to Use
 
@@ -194,3 +135,31 @@ This platform supports multiple environments (e.g., `dev`, `prod`). Environment-
 - **prod.env**: Production environment configuration.
 
 To switch between environments, load the appropriate environment configuration from the `config/` directory. Each environment configuration contains the necessary environment variables and settings to adjust the behavior of the platform components.
+
+
+
+
+## External Resources Used in This Project
+
+This project is inspired by various concepts and tools related to the self-service data ingestion platform and the tech stack at N26. Below are some key references used during the development of this platform:
+
+1. **Tech Stack Used in N26 - Overview of Architecture**  
+   Gain insight into the technology and architecture used at N26:
+   - [Engineering at N26: A Tour of Our Tech Stack and Architecture](https://medium.com/insiden26/engineering-at-n26-a-tour-of-our-tech-stack-and-architecture-9e58ce96f889)
+
+2. **Interview with Analytics Engineer at N26**  
+   Watch an interview with an Analytics Engineer at N26 to understand the role's responsibilities and expectations:
+   - [Interview with Analytics Engineer at N26](https://www.youtube.com/watch?v=kqm3VcyWS3o)
+
+3. **Characteristics of a Self-Service Data Lake**  
+   Explore the characteristics and architecture of a self-service data lake:
+   - [Characteristics and Architecture of a Self-Service Data Lake](https://medium.com/engineered-publicis-sapient/characteristics-and-architecture-of-a-self-service-data-lake-a3eb61aac032)
+
+4. **Streaming Data into BigQuery**  
+   Learn how to stream billions of daily events from Kafka to BigQuery:
+   - [Kafka to BigQuery Load: A Guide for Streaming Billions of Daily Events](https://medium.com/myheritage-engineering/kafka-to-bigquery-load-a-guide-for-streaming-billions-of-daily-events-cbbf31f4b737)
+
+5. **Transformations Using Polars**  
+   Discover how Polars can improve data transformation and code quality:
+   - [Improving Code Quality During Data Transformation with Polars](https://towardsdatascience.com/improving-code-quality-during-data-transformation-with-polars-92997e67c8a9)
+
