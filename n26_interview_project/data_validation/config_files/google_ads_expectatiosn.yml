@@ -1,0 +1,12 @@
+expectations:
+  - expect_column_to_exist:
+      column: "ad_group_name"
+  - expect_column_values_to_not_be_null:
+      column: "ad_group_name"
+  - expect_column_values_to_be_of_type:
+      column: "cost"
+      type_: "float"
+  - expect_column_values_to_be_between:
+      column: "clicks"
+      min_value: 0
+      max_value: 10000

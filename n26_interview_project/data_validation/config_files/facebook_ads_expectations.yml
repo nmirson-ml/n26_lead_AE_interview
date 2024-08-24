@@ -1,0 +1,12 @@
+expectations:
+  - expect_column_to_exist:
+      column: "campaign_name"
+  - expect_column_values_to_not_be_null:
+      column: "campaign_name"
+  - expect_column_values_to_be_of_type:
+      column: "clicks"
+      type_: "int"
+  - expect_column_values_to_be_between:
+      column: "impressions"
+      min_value: 0
+      max_value: 1000000

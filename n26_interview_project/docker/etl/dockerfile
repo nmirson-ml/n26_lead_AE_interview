@@ -1,0 +1,23 @@
+# Base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install necessary system packages
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install DuckDB
+RUN pip install duckdb boto3 pandas
+
+# Copy the etl code
+COPY etl/ ./etl/
+
+# Copy requirements if you have other dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Set the default command to run the ETL process
+CMD ["python", "etl/duckdb_etl.py"]
